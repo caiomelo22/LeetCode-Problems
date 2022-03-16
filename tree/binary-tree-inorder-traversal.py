@@ -19,4 +19,13 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+        if root == None:
+            return []
         
+        return_list = []
+        if root.left != None:
+            return_list.extend(self.inorderTraversal(root.left))
+        return_list.extend([root.val])
+        if root.right != None:
+            return_list.extend(self.inorderTraversal(root.right))
+        return return_list

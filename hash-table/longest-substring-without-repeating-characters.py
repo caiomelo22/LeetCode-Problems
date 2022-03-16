@@ -13,4 +13,16 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        used = dict()
+        last_non_duplicate = 0
+        biggest = 0
+        
+        for i in range(len(s)):
+            if s[i] in used:
+                last_non_duplicate = max(used[s[i]] + 1, last_non_duplicate)
+                
+            biggest = max(i-last_non_duplicate+1, biggest)
+            used[s[i]] = i
+            
+        return biggest
         
