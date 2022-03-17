@@ -19,4 +19,31 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        if root == None:
+            return []
+        
+        queue = []     #Initialize a queue
+        
+        queue.append(root)
+        return_list = []
+
+        while queue:          # Creating loop to visit each node
+            
+            append_value = []
+            len_current_level = len(queue)
+            
+            for i in range(len_current_level):
+                node = queue.pop(0) 
+                append_value.append(node.val)
+
+                if node.left != None:
+                    queue.append(node.left)
+
+                if node.right != None:
+                    queue.append(node.right)
+
+            if len(append_value) > 0:
+                return_list.append(append_value)
+        
+        return return_list
         
